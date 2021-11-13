@@ -112,7 +112,7 @@ class Camera:
             self.formats = "{}/{}/{} {}:{}:{}   Motion: {}   Recording: {}".format(self.today.day, self.today.month, self.today.year, self.today.hour, self.today.minute, self.second, self.motion, self.recording)
             cv2.rectangle(self.frame, (0, self.screen[1]+5), (0 + self.resolution[0], self.resolution[1] + 35), (0, 0, 0), -1)
             self.frame = cv2.putText(self.frame, self.formats, (0+3, self.screen[1]-6), cv2.FONT_HERSHEY_DUPLEX, 0.75, (255, 255, 255), 1, cv2.LINE_AA, False)
-            # self.frame = cv2.rotate(self.frame, cv2.ROTATE_180)
+            self.frame = cv2.rotate(self.frame, cv2.ROTATE_180)
             self.success, self.image = cv2.imencode('.jpeg', self.frame)
             return self.image.tobytes()
         else:
